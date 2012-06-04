@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="help">
+  <!-- Import Properties -->
+  <property import="burp.properties" />
+
+  <!-- Set Path Properties -->
+  <property key="path.root"                       value="." />
+  <property key="path.cache",                     value="${path.root}/Cache" />
+  <property key="path.configuration",             value="${path.root}/Configuration" />
+  <property key="path.data",                      value="${path.root}/Data" />
+  <property key="path.documentation",             value="${path.root}/Documentation" />
+  <property key="path.downloads",                 value="${path.root}/Downloads" />
+  <property key="path.source",                    value="${path.root}/Source" />
+  <property key="path.temporary",                 value="${path.root}/Temporary" />
+  <property key="path.tests",                     value="${path.root}/Tests" />
+  <property key="path.tests.functional",          value="${path.root}/Tests/Functional" />
+  <property key="path.tests.integration",         value="${path.root}/Tests/Integration" />
+  <property key="path.tests.unit",                value="${path.root}/Tests/Unit" />
+  <property key="path.web",                       value="${path.root}/Web" />
+
+  <!-- Set Vendors Path Properties -->
+  <property key="path.vendors"                    value="Vendors" />
+  <property key="path.vendors.cache",             value="${path.vendors.root}/Cache" />
+  <property key="path.vendors.configuration",     value="${path.vendors.root}/Configuration" />
+  <property key="path.vendors.data",              value="${path.vendors.root}/Data" />
+  <property key="path.vendors.documentation",     value="${path.vendors.root}/Documentation" />
+  <property key="path.vendors.downloads",         value="${path.vendors.root}/Downloads" />
+  <property key="path.vendors.source",            value="${path.vendors.root}/Source" />
+  <property key="path.vendors.temporary",         value="${path.vendors.root}/Temporary" />
+  <property key="path.vendors.tests",             value="${path.vendors.root}/Tests" />
+  <property key="path.vendors.tests.functional",  value="${path.vendors.root}/Tests/Functional" />
+  <property key="path.vendors.tests.integration", value="${path.vendors.root}/Tests/Integration" />
+  <property key="path.vendors.tests.unit",        value="${path.vendors.root}/Tests/Unit" />
+  <property key="path.vendors.web",               value="${path.vendors.root}/Web" />
+  
+  <!-- Project Version -->
+  <logic>
+    <if>
+      <and>
+        <is:set key="project.snapshot" />
+        <is:true key="project.snapshot" />
+      </and>
+    </if>
+    <then>
+      <property key="project.stability" value="alpha" />
+      <property key="project.version" value="${project.major}.${project.minor}.${project.path}.${date.now}" />
+    </then>
+    <else>
+      <property key="project.stability" value="stable" />
+      <property key="project.version" value="${project.major}.${project.minor}.${project.path}" />
+    </else>
+  </logic>
+  
+  <!-- Execute Logical Statements -->
+  <logic>
+    <if>
+      <and></and>
+      <not></not>
+      <or></or>
+    </if>
+    <then></then>
+    <elseif></elseif>
+    <then></then>
+    <else></else>
+  </logic>
+  
+  <!-- Build File Lists -->
+  <files id="" root="">
+    <include pattern="" />
+    <exclude pattern="" />
+  </files>
+  
+  <!-- Import & Execute Another File -->
+  <import file="" />
+  
+  <!-- Text Output -->
+  <print>Print a message to the console.</print>
+  
+  <target id="help">
+    <run check="true" log="true">command</run>
+    <delete>delete/this/file.txt</disk:delete>
+    <delete>delete/this/directory</disk:delete>
+    <delete pattern="*.txt">delete/text/files/in/this/directory</disk:delete>
+    
+    <create:file path="create/this/file.txt" />
+    <create:directory path="create/this/directory" />
+  </target>
+</project>
